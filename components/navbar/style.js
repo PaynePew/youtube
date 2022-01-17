@@ -9,6 +9,7 @@ export const Container = styled.div`
   height: 100px;
   padding: 0px 50px;
   background-color: #d1411e;
+  z-index: 999;
 `;
 
 export const Item = styled.div`
