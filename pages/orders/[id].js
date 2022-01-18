@@ -12,17 +12,19 @@ import {
   Tr,
   Status,
   CheckedIcon,
+  Id,
+  Name,
+  Address,
+  Total,
 } from "../../views/orders/style";
 import Image from "next/image";
 
-
 const Orders = () => {
-
-const status = 0;
+  const status = 0;
   const statusClass = (index) => {
-    if (index - status < 1) return 'done';
-    if (index - status === 1) return 'inProgress';
-    if (index - status > 1) return 'undone';
+    if (index - status < 1) return "done";
+    if (index - status === 1) return "inProgress";
+    if (index - status > 1) return "undone";
   };
 
   return (
@@ -30,7 +32,7 @@ const status = 0;
       <Left>
         <Row>
           <Table>
-            <Tr>
+            <Tr title={true}>
               <th>Order ID</th>
               <th>Customer</th>
               <th>Address</th>
@@ -38,16 +40,16 @@ const status = 0;
             </Tr>
             <Tr>
               <td>
-                <span>113213</span>
+                <Id>113213</Id>
               </td>
               <td>
-                <span>John Doe</span>
+                <Name>John Doe</Name>
               </td>
               <td>
-                <span>Elton st. 212-33 LA</span>
+                <Address>Elton st. 212-33 LA</Address>
               </td>
               <td>
-                <span>$79.80</span>
+                <Total>$79.80</Total>
               </td>
             </Tr>
           </Table>

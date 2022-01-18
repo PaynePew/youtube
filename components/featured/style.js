@@ -1,10 +1,14 @@
 import styled from "styled-components";
+import { MEDIA_BREAK } from "../globals";
 
 export const Container = styled.div`
   height: calc(100vh - 100px);
   background-color: #d1411e;
   overflow: hidden;
   position: relative;
+  @media screen and (max-width: ${MEDIA_BREAK}px) {
+    height: 50vh;
+  }
 `;
 
 export const ArrowContainer = styled.div`

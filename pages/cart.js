@@ -12,6 +12,9 @@ import {
   TotalTextTitle,
   Tr,
   Wrapper,
+  Extras,
+  Price,
+  Quantity,
 } from "../views/cart/style";
 import Image from "next/image";
 
@@ -20,7 +23,7 @@ const Cart = () => {
     <Container>
       <Left>
         <Table>
-          <Tr>
+          <Tr title={true}>
             <th>Product</th>
             <th>Name</th>
             <th>Extras</th>
@@ -43,40 +46,13 @@ const Cart = () => {
               <Name>CORALZO</Name>
             </td>
             <td>
-              <span>Double ingredient, spicy sauce</span>
+              <Extras>Double ingredient, spicy sauce</Extras>
             </td>
             <td>
-              <span>$19.90</span>
+              <Price>$19.90</Price>
             </td>
             <td>
-              <span>2</span>
-            </td>
-            <td>
-              <Total>$39.8</Total>
-            </td>
-          </Tr>
-          <Tr>
-            <td>
-              <ImgContainer>
-                <Image
-                  src="/img/pizza.png"
-                  layout="fill"
-                  objectFit="cover"
-                  alt=""
-                />
-              </ImgContainer>
-            </td>
-            <td>
-              <Name>CORALZO</Name>
-            </td>
-            <td>
-              <span>Double ingredient, spicy sauce</span>
-            </td>
-            <td>
-              <span>$19.90</span>
-            </td>
-            <td>
-              <span>2</span>
+              <Quantity>2</Quantity>
             </td>
             <td>
               <Total>$39.8</Total>
@@ -97,13 +73,40 @@ const Cart = () => {
               <Name>CORALZO</Name>
             </td>
             <td>
-              <span>Double ingredient, spicy sauce</span>
+              <Extras>Double ingredient, spicy sauce</Extras>
             </td>
             <td>
-              <span>$19.90</span>
+              <Price>$19.90</Price>
             </td>
             <td>
-              <span>2</span>
+              <Quantity>2</Quantity>
+            </td>
+            <td>
+              <Total>$39.8</Total>
+            </td>
+          </Tr>
+          <Tr>
+            <td>
+              <ImgContainer>
+                <Image
+                  src="/img/pizza.png"
+                  layout="fill"
+                  objectFit="cover"
+                  alt=""
+                />
+              </ImgContainer>
+            </td>
+            <td>
+              <Name>CORALZO</Name>
+            </td>
+            <td>
+              <Extras>Double ingredient, spicy sauce</Extras>
+            </td>
+            <td>
+              <Price>$19.90</Price>
+            </td>
+            <td>
+              <Quantity>2</Quantity>
             </td>
             <td>
               <Total>$39.8</Total>

@@ -61,10 +61,16 @@ const Product = () => {
           <Option>
             <Checkbox type="checkbox" id="double" name="double" />
             <label htmlFor="double">Double Ingredients</label>
+          </Option>
+          <Option>
             <Checkbox type="checkbox" id="cheese" name="cheese" />
             <label htmlFor="cheese">Cheese</label>
+          </Option>
+          <Option>
             <Checkbox type="checkbox" id="spicy" name="spicy" />
             <label htmlFor="cheese">Spicy Sauce</label>
+          </Option>
+          <Option>
             <Checkbox type="checkbox" id="garlic" name="garlic" />
             <label htmlFor="cheese">Garlic Sauce</label>
           </Option>

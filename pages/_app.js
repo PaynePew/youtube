@@ -1,7 +1,7 @@
 import Layout from "../components/layout";
 import { ThemeProvider } from "styled-components";
 import theme from "../shared/theme";
-import GlobalStyles from "../shared/theme/normalize";
+import GlobalStyles from "../shared/normalize";
 
 function MyApp({ Component, pageProps }) {
   return (

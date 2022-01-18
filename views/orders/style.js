@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { keyframes, css } from "styled-components";
+import { MEDIA_BREAK } from "../../components/globals";
 
 const sparkle = keyframes`
   from {
@@ -13,6 +14,9 @@ const sparkle = keyframes`
 export const Container = styled.div`
   padding: 50px;
   display: flex;
+  @media screen and (max-width: ${MEDIA_BREAK}px) {
+    flex-direction: column;
+  }
 `;
 
 export const Left = styled.div`
@@ -29,6 +33,14 @@ export const Row = styled.div`
     display: flex;
     justify-content: space-between;
   }
+  @media screen and (max-width: ${MEDIA_BREAK}px) {
+    &:last-child {
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 `;
 
 export const CheckedIcon = styled.div``;
@@ -37,6 +49,9 @@ export const Status = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media screen and (max-width: ${MEDIA_BREAK}px) {
+    margin-bottom: 20px;
+  }
   ${(props) => {
     switch (props.$mode) {
       case "done":
@@ -59,7 +74,16 @@ export const Status = styled.div`
   }}
 `;
 
-export const Tr = styled.tr``;
+export const Tr = styled.tr`
+  @media screen and (max-width: ${MEDIA_BREAK}px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+    display: ${(props) => (props.title ? "none" : "flex")};
+  }
+`;
 
 export const Table = styled.table`
   width: 100%;
@@ -77,6 +101,9 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   color: white;
+  @media screen and (max-width: ${MEDIA_BREAK}px) {
+    width: 100%;
+  }
 `;
 export const Title = styled.h2``;
 export const TotalText = styled.div``;
@@ -90,4 +117,37 @@ export const Button = styled.button`
   font-weight: bold;
   margin-top: 20px;
   cursor: not-allowed;
+`;
+
+export const Id = styled.span`
+  @media screen and (max-width: ${MEDIA_BREAK}px) {
+    &::before {
+      content: "Order ID: ";
+      font-weight: 500;
+    }
+  }
+`;
+export const Name = styled.span`
+  @media screen and (max-width: ${MEDIA_BREAK}px) {
+    &::before {
+      content: "Customer: ";
+      font-weight: 500;
+    }
+  }
+`;
+export const Address = styled.span`
+  @media screen and (max-width: ${MEDIA_BREAK}px) {
+    &::before {
+      content: "Address: ";
+      font-weight: 500;
+    }
+  }
+`;
+export const Total = styled.span`
+  @media screen and (max-width: ${MEDIA_BREAK}px) {
+    &::before {
+      content: "Total: ";
+      font-weight: 500;
+    }
+  }
 `;

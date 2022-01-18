@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { MEDIA_BREAK } from "../globals";
 
 export const Container = styled.div`
   display: flex;
@@ -19,6 +20,14 @@ export const Item = styled.div`
   justify-content: center;
   &:nth-child(2) {
     flex: 3;
+  }
+  @media screen and (max-width: ${MEDIA_BREAK}px) {
+    &:nth-child(2) {
+      display: none;
+    }
+    &:nth-child(1) {
+      flex: 3;
+    }
   }
 `;
 
