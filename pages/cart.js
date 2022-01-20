@@ -23,7 +23,7 @@ const Cart = () => {
     <Container>
       <Left>
         <Table>
-          <Tr title={true}>
+          <Tr title="true">
             <th>Product</th>
             <th>Name</th>
             <th>Extras</th>
