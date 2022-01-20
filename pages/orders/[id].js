@@ -18,9 +18,10 @@ import {
   Total,
 } from "../../views/orders/style";
 import Image from "next/image";
+import axios from "axios";
 
-const Orders = () => {
-  const status = 0;
+const Orders = ({ order }) => {
+  const status = order.status;
   const statusClass = (index) => {
     if (index - status < 1) return "done";
     if (index - status === 1) return "inProgress";
@@ -43,16 +44,16 @@ const Orders = () => {
             <tbody>
               <Tr>
                 <td>
-                  <Id>113213</Id>
+                  <Id>{order._id}</Id>
                 </td>
                 <td>
-                  <Name>John Doe</Name>
+                  <Name>{order.customer}</Name>
                 </td>
                 <td>
-                  <Address>Elton st. 212-33 LA</Address>
+                  <Address>{order.address}</Address>
                 </td>
                 <td>
-                  <Total>$79.80</Total>
+                  <Total>${order.total}</Total>
                 </td>
               </Tr>
             </tbody>
@@ -93,19 +94,26 @@ const Orders = () => {
         <Wrapper>
           <Title>Cart Total</Title>
           <TotalText>
-            <TotalTextTitle>Subtotal:</TotalTextTitle>$79.60
+            <TotalTextTitle>Subtotal:</TotalTextTitle>${order.total}
           </TotalText>
           <TotalText>
             <TotalTextTitle>Discount:</TotalTextTitle>$0.00
           </TotalText>
           <TotalText>
-            <TotalTextTitle>Total:</TotalTextTitle>$79.60
+            <TotalTextTitle>Total:</TotalTextTitle>${order.total}
           </TotalText>
           <Button>PAID</Button>
         </Wrapper>
       </Right>
     </Container>
   );
+};
+
+export const getServerSideProps = async ({ params }) => {
+  const res = await axios.get(`http://localhost:3000/api/orders/${params.id}`);
+  return {
+    props: { order: res.data },
+  };
 };
 
 export default Orders;

@@ -42,6 +42,7 @@ export const List = styled.ul`
 export const ListItem = styled.li`
   margin: 20px;
   font-weight: 500;
+  cursor: pointer;
 `;
 
 export const Cart = styled.div`

@@ -28,7 +28,9 @@ const Navbar = () => {
       </Item>
       <Item>
         <List>
-          <ListItem>Homepage</ListItem>
+          <Link href="/" passHref>
+            <ListItem>Homepage</ListItem>
+          </Link>
           <ListItem>Products</ListItem>
           <ListItem>Menu</ListItem>
           <Image src="/img/logo.png" alt="" width="160" height="69" />
