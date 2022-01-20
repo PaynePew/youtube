@@ -1,7 +1,7 @@
 import PizzaCard from "../pizzaCard";
 import { Container, Desc, Title, Wrapper } from "./style";
 
-function PizzaList() {
+function PizzaList({ pizzaList }) {
   return (
     <Container>
       <Title>THE BEST PIZZA IN TOWN</Title>
@@ -12,14 +12,9 @@ function PizzaList() {
         nesciunt accusamus inventore!
       </Desc>
       <Wrapper>
-        <PizzaCard/>
-        <PizzaCard/>
-        <PizzaCard/>
-        <PizzaCard/>
-        <PizzaCard/>
-        <PizzaCard/>
-        <PizzaCard/>
-        <PizzaCard/>
+        {pizzaList.map((_pizza) => (
+          <PizzaCard key={_pizza._id} pizza={_pizza} />
+        ))}
       </Wrapper>
     </Container>
   );

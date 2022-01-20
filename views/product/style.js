@@ -108,7 +108,9 @@ export const Checkbox = styled.input`
   }
 `;
 export const Add = styled.div``;
-export const Quantity = styled.input`
+export const Quantity = styled.input.attrs({
+  type: "number",
+})`
   width: 50px;
   height: 30px;
   @media screen and (max-width: ${MEDIA_BREAK}px) {

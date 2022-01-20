@@ -1,15 +1,16 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Container, Desc, Price, Title } from "./style";
 
-const PizzaCard = () => {
+const PizzaCard = ({ pizza }) => {
   return (
     <Container>
-      <Image src="/img/pizza.png" alt="" width="500" height="500" />
-      <Title>FIORI DI ZUCCA</Title>
-      <Price>$19.90</Price>
-      <Desc>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur,
-      </Desc>
+      <Link href={`/product/${pizza._id}`} passHref>
+        <Image src={pizza.img} alt="" width="500" height="500" />
+      </Link>
+      <Title>{pizza.title}</Title>
+      <Price>${pizza.prices[0]}</Price>
+      <Desc>{pizza.desc}</Desc>
     </Container>
   );
 };

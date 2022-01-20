@@ -17,8 +17,12 @@ import {
   Quantity,
 } from "../views/cart/style";
 import Image from "next/image";
+import { useDispatch, useSelector } from "react-redux";
+import Product from "./product/[id]";
 
 const Cart = () => {
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
   return (
     <Container>
       <Left>
@@ -31,100 +35,50 @@ const Cart = () => {
             <th>Quantity</th>
             <th>Total</th>
           </Tr>
-          <Tr>
-            <td>
-              <ImgContainer>
-                <Image
-                  src="/img/pizza.png"
-                  layout="fill"
-                  objectFit="cover"
-                  alt=""
-                />
-              </ImgContainer>
-            </td>
-            <td>
-              <Name>CORALZO</Name>
-            </td>
-            <td>
-              <Extras>Double ingredient, spicy sauce</Extras>
-            </td>
-            <td>
-              <Price>$19.90</Price>
-            </td>
-            <td>
-              <Quantity>2</Quantity>
-            </td>
-            <td>
-              <Total>$39.8</Total>
-            </td>
-          </Tr>
-          <Tr>
-            <td>
-              <ImgContainer>
-                <Image
-                  src="/img/pizza.png"
-                  layout="fill"
-                  objectFit="cover"
-                  alt=""
-                />
-              </ImgContainer>
-            </td>
-            <td>
-              <Name>CORALZO</Name>
-            </td>
-            <td>
-              <Extras>Double ingredient, spicy sauce</Extras>
-            </td>
-            <td>
-              <Price>$19.90</Price>
-            </td>
-            <td>
-              <Quantity>2</Quantity>
-            </td>
-            <td>
-              <Total>$39.8</Total>
-            </td>
-          </Tr>
-          <Tr>
-            <td>
-              <ImgContainer>
-                <Image
-                  src="/img/pizza.png"
-                  layout="fill"
-                  objectFit="cover"
-                  alt=""
-                />
-              </ImgContainer>
-            </td>
-            <td>
-              <Name>CORALZO</Name>
-            </td>
-            <td>
-              <Extras>Double ingredient, spicy sauce</Extras>
-            </td>
-            <td>
-              <Price>$19.90</Price>
-            </td>
-            <td>
-              <Quantity>2</Quantity>
-            </td>
-            <td>
-              <Total>$39.8</Total>
-            </td>
-          </Tr>
+          {cart.products.map((_product) => (
+            <Tr key={_product._id}>
+              <td>
+                <ImgContainer>
+                  <Image
+                    src={_product.img}
+                    layout="fill"
+                    objectFit="cover"
+                    alt=""
+                  />
+                </ImgContainer>
+              </td>
+              <td>
+                <Name>{_product.title}</Name>
+              </td>
+              <td>
+                {_product.extras.map((_extra) => (
+                  <Extras key={_extra._id}>{_extra.text}</Extras>
+                ))}
+              </td>
+              <td>
+                <Price>${_product.price}</Price>
+              </td>
+              <td>
+                <Quantity>{_product.quantity}</Quantity>
+              </td>
+              <td>
+                <Total>${_product.price * _product.quantity}</Total>
+              </td>
+            </Tr>
+          ))}
         </Table>
       </Left>
       <Right>
         <Wrapper>
           <Title>Cart Total</Title>
           <TotalText>
-            <TotalTextTitle>Subtotal:</TotalTextTitle>$79.60
+            <TotalTextTitle>Subtotal:</TotalTextTitle>${cart.total}
           </TotalText>
           <TotalText>
             <TotalTextTitle>Discount:</TotalTextTitle>$0.00
           </TotalText>
           <TotalText>
-            <TotalTextTitle>Total:</TotalTextTitle>$79.60
+            <TotalTextTitle>Total:</TotalTextTitle>${cart.total}
           </TotalText>
           <Button>CHECKOUT NOW!</Button>
         </Wrapper>

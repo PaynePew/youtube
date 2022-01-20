@@ -19,15 +19,41 @@ import {
 } from "../../views/product/style";
 import Image from "next/image";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../redux/cartSlice";
+import axios from "axios";
 
-const Product = () => {
+const Product = ({ pizza }) => {
+  const [price, setPrice] = useState(pizza.prices[0]);
   const [size, setSize] = useState(0);
-  const pizza = {
-    id: 1,
-    img: "/img/pizza.png",
-    name: "CAMPAGNOLA",
-    price: [19.9, 23.9, 27.9],
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis arcu purus, rhoncus fringilla vestibulum vel, dignissim vel ante. Nulla facilisi. Nullam a urna sit amet tellus pellentesque egestas in in ante.",
+  const [quantity, setQuantity] = useState(1);
+  const [extras, setExtras] = useState([]);
+  const dispatch = useDispatch();
+
+  const changePrice = (number) => {
+    setPrice(price + number);
+  };
+
+  const handleSize = (sizeIndex) => {
+    const difference = pizza.prices[sizeIndex] - pizza.prices[size];
+    setSize(sizeIndex);
+    changePrice(difference);
+  };
+
+  const handleChange = (e, option) => {
+    const checked = e.target.checked;
+
+    if (checked) {
+      changePrice(option.price);
+      setExtras((prev) => [...prev, option]);
+    } else {
+      changePrice(-option.price);
+      setExtras(extras.filter((extra) => extra._id !== option._id));
+    }
+  };
+
+  const handleClick = () => {
+    dispatch(addProduct({ ...pizza, extras, price, quantity }));
   };
 
   return (
@@ -38,50 +64,59 @@ const Product = () => {
         </ImgContainer>
       </Left>
       <Right>
-        <Title>{pizza.name}</Title>
-        <Price>${pizza.price[size]}</Price>
+        <Title>{pizza.title}</Title>
+        <Price>${price}</Price>
         <Desc>{pizza.desc}</Desc>
         <Choose>Choose the size</Choose>
         <Sizes>
-          <Size onClick={() => setSize(0)}>
+          <Size onClick={() => handleSize(0)}>
             <Image src="/img/size.png" layout="fill" alt="" />
             <Number>Small</Number>
           </Size>
-          <Size onClick={() => setSize(1)}>
+          <Size onClick={() => handleSize(1)}>
             <Image src="/img/size.png" layout="fill" alt="" />
             <Number>Medium</Number>
           </Size>
-          <Size onClick={() => setSize(2)}>
+          <Size onClick={() => handleSize(2)}>
             <Image src="/img/size.png" layout="fill" alt="" />
             <Number>Large</Number>
           </Size>
         </Sizes>
         <Choose>Choose additional ingredients</Choose>
         <Ingredients>
-          <Option>
-            <Checkbox type="checkbox" id="double" name="double" />
-            <label htmlFor="double">Double Ingredients</label>
-          </Option>
-          <Option>
-            <Checkbox type="checkbox" id="cheese" name="cheese" />
-            <label htmlFor="cheese">Cheese</label>
-          </Option>
-          <Option>
-            <Checkbox type="checkbox" id="spicy" name="spicy" />
-            <label htmlFor="cheese">Spicy Sauce</label>
-          </Option>
-          <Option>
-            <Checkbox type="checkbox" id="garlic" name="garlic" />
-            <label htmlFor="cheese">Garlic Sauce</label>
-          </Option>
+          {pizza.extraOptions.map((_option) => (
+            <Option key={_option._id}>
+              <Checkbox
+                type="checkbox"
+                id={_option.text}
+                name={_option.text}
+                onChange={(e) => handleChange(e, _option)}
+              />
+              <label htmlFor="double">{_option.text}</label>
+            </Option>
+          ))}
         </Ingredients>
         <Add>
-          <Quantity type="number" defaultValue={1} />
-          <Button>Add to Cart</Button>
+          <Quantity
+            defaultValue={1}
+            onChange={(e) => setQuantity(e.target.value)}
+          />
+          <Button onClick={handleClick}>Add to Cart</Button>
         </Add>
       </Right>
     </Container>
   );
+};
+
+export const getServerSideProps = async ({ params }) => {
+  const res = await axios.get(
+    `http://localhost:3000/api/products/${params.id}`
+  );
+  return {
+    props: {
+      pizza: res.data,
+    },
+  };
 };
 
 export default Product;
