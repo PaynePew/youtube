@@ -32,26 +32,30 @@ const Orders = () => {
       <Left>
         <Row>
           <Table>
-            <Tr title={true}>
-              <th>Order ID</th>
-              <th>Customer</th>
-              <th>Address</th>
-              <th>Total</th>
-            </Tr>
-            <Tr>
-              <td>
-                <Id>113213</Id>
-              </td>
-              <td>
-                <Name>John Doe</Name>
-              </td>
-              <td>
-                <Address>Elton st. 212-33 LA</Address>
-              </td>
-              <td>
-                <Total>$79.80</Total>
-              </td>
-            </Tr>
+            <tbody>
+              <Tr title="true">
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Address</th>
+                <th>Total</th>
+              </Tr>
+            </tbody>
+            <tbody>
+              <Tr>
+                <td>
+                  <Id>113213</Id>
+                </td>
+                <td>
+                  <Name>John Doe</Name>
+                </td>
+                <td>
+                  <Address>Elton st. 212-33 LA</Address>
+                </td>
+                <td>
+                  <Total>$79.80</Total>
+                </td>
+              </Tr>
+            </tbody>
           </Table>
         </Row>
         <Row>

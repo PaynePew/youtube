@@ -114,3 +114,18 @@ export const Quantity = styled.span`
     }
   }
 `;
+
+export const PaymentMethods = styled.div`
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const PayButton = styled.button`
+  padding: 5px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  background-color: white;
+  color: teal;
+  font-weight: bold;
+`;
