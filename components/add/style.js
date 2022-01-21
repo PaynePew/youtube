@@ -33,3 +33,71 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   position: relative;
 `;
+
+export const Close = styled.span`
+  width: 30px;
+  height: 30px;
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+`;
+export const Item = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+`;
+
+export const Input = styled.input`
+  border: none;
+  border-bottom: 1px solid gray;
+  outline: none;
+  width: ${(props) => (props.inputSm ? "25%" : "none")};
+`;
+
+export const PriceContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const Extra = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const ExtraItems = styled.div`
+  margin: 10px 0px;
+  display: flex;
+  flex-wrap: wrap;
+`;
+export const ExtraItem = styled.span`
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid tomato;
+  background-color: white;
+  color: tomato;
+  margin-right: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+`;
+export const AddButton = styled.button`
+  width: 25%;
+  border: none;
+  background-color: teal;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 5px 0;
+  align-self: flex-end;
+`;
