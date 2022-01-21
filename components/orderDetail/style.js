@@ -33,10 +33,10 @@ export const Item = styled.div`
   flex-direction: column;
   width: 100%;
   margin-bottom: 15px;
-  .label {
+  label {
     margin-bottom: 10px;
   }
-  .input {
+  input {
     height: 40px;
   }
 `;
