@@ -4,7 +4,7 @@ import Image from "next/image";
 import Featured from "../components/featured";
 import PizzaList from "../views/home/components/pizzaList";
 import { useState } from "react";
-import { AddButton } from "../components/add/addButton";
+import AddButton from "../components/add/addButton";
 import Add from "../components/add";
 
 export default function Home({ pizzaList, admin }) {
@@ -17,9 +17,9 @@ export default function Home({ pizzaList, admin }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Featured />
-      {/* <AddButton setClose={setClose} /> */}
+      {admin && <AddButton setClose={setClose} />}
       <PizzaList pizzaList={pizzaList} />
-      {close && <Add setClose={setClose} />}
+      {!close && <Add setClose={setClose} />}
     </>
   );
 }
